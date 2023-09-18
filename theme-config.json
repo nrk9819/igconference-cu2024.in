@@ -1,0 +1,45 @@
+{
+  "site": {
+    "name": "IIG Conference CU, 2024",
+    "url": "https://iigconference-cu2024.in",
+    "description": "IIG Conference at Cotton University, 2024"
+  },
+  "header": {
+    "topbar": {
+      "left": "Venue: Cotton University",
+      "right": "Date: 22-24th January, 2024"
+    },
+    "nav": {
+      "menuItems": [
+        {
+          "name": "About",
+          "link": "/about"
+        },
+        {
+          "name": "Themes",
+          "link": "/themes"
+        },
+        {
+          "name": "Registration",
+          "link": "/registration"
+        },
+        {
+          "name": "Guidelines",
+          "link": "/guidelines"
+        }
+      ]
+    }
+  },
+  "pages": {
+    "landing": {
+      "hero-section": {
+        "title": "The 44th IIG Annual Meet and International Conference",
+        "subtitle": "Shaping Tomorrow: Society, Culture, and the Environment in an Interconnected World."
+      },
+      "themes-section": {
+        "title": "Against this backdrop, the conference under the aegis of the Institute of Indian Geographers focuses on the following sub-themes for plenary discussions.",
+        "button-text": "Explore More Themes"
+      }
+    }
+  }
+}

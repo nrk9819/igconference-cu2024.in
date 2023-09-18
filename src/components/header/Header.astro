@@ -1,0 +1,38 @@
+---
+import Topbar from "./Topbar.astro";
+import Hamburger from "./Hamburger.astro";
+import { NAV_MENU_ITEMS } from "../../consts";
+---
+<Topbar id="topbar"/>
+<header id="site-header" class="w-full py-3 md:py-4 px-4 z-50 bg-white border-b">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/">
+            <img src="/logo-main.png" alt="Main logo" class="h-8 w-8 md:h-10 md:w-10"> 
+        </a>
+        <nav class="hidden md:block">
+            <ul class="flex space-x-8">
+                {
+                    NAV_MENU_ITEMS.map(item => (
+                        <li>
+                            <a href={item.link} class="text-lg">{item.name}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+        <Hamburger/>
+     </div>
+</header>
+
+<script>
+    window.addEventListener("scroll", ()=> {
+        const topbar = document.getElementById('topbar');
+        const header = document.getElementById("site-header")
+        const topbarRect = topbar.getBoundingClientRect()
+        
+        if(topbarRect.bottom <= 0)
+            {header.classList.add("fixed","top-0")}
+        else
+        {header.classList.remove("fixed","top-0")}
+    })
+</script>

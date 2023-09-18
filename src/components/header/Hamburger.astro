@@ -1,0 +1,58 @@
+---
+import { NAV_MENU_ITEMS } from '../../consts';
+---
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black opacity-50 z-10 hidden"></div>
+
+<!-- Hamburger button -->
+<button id="hamburger-btn" class="md:hidden">
+  <img src="icons/hamburger.svg" alt="Menu icon" class="w-6 h-6" />
+</button>
+
+<!-- Offcanvas menu -->
+<div
+  id="offcanvas-menu"
+  class="flex flex-col w-72 mr-4 fixed inset-y-4 right-0 z-50 bg-orange-50 rounded-lg transform translate-x-[19rem] transition duration-300 ease-in-out"
+>
+  <button id="close-btn" class="self-end pt-4 pr-4">
+    <img src="icons/close.svg" alt="Close icon" class="w-5 h-5" />
+  </button>
+  <!-- Menu Items -->
+  <ul class="h-full overflow-y-auto">
+    {
+      NAV_MENU_ITEMS.map(item => (
+        <li class="block py-6 px-6 border-b border-orange-100">
+          <a
+            href={item.link}
+            class="text-2xl font-medium hover:text-orange-800 transition-colors ease-in duration-300"
+          >
+            {item.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburger-btn')!;
+  const closeBtn = document.getElementById('close-btn')!;
+  const offcanvasMenu = document.getElementById('offcanvas-menu')!;
+  const overlay = document.getElementById('overlay')!;
+  const body = document.body;
+
+  const toggle = () => {
+    offcanvasMenu.classList.toggle('translate-x-[19rem]');
+    overlay.classList.toggle('hidden');
+
+    if (body.style.overflowY === 'hidden') {
+      body.style.overflowY = 'auto';
+    } else {
+      body.style.overflowY = 'hidden';
+    }
+  };
+  hamburgerBtn.addEventListener('click', toggle);
+  closeBtn.addEventListener('click', toggle);
+  overlay.addEventListener('click', toggle);
+</script>

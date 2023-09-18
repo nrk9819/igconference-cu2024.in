@@ -1,0 +1,69 @@
+---
+const images = await Astro.glob("../images/slider-*.jpg")
+---
+
+<!-- Slideshow Container -->
+<div class="aspect-video relative m-auto overflow-hidden bg-green-100">
+    <!-- Slides -->
+        {
+            images.map((image,i) => (
+            <div id="slide" class="fade hidden">
+                <img src={image.default.src} alt=`slide-${i+1}` class="w-full">
+            </div>
+            ))
+         }
+    <!-- Next and Prev button -->
+    <button id="slide-prev" class="p-2 md:p-5 absolute top-1/2 rounded-r-lg bg-gray-800 opacity-50 hover:opacity-90 text-xl text-white transition duration-800">&#10094;</button>
+    <button id="slide-next" class="p-2 md:p-5 absolute top-1/2 right-0 rounded-l-lg bg-gray-800 opacity-50 hover:opacity-90 text-l md:text-xl text-white transition duration-800">&#10095;</button>
+</div>
+
+
+<style>
+ .fade {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@keyframes fade {
+  from {opacity: .5}
+  to {opacity: 1}
+}
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", ()=>{
+    const slides = document.querySelectorAll("#slide")
+    const prevButton = document.querySelector("#slide-prev")
+    const nextButton = document.querySelector("#slide-next")
+
+    let currentSlideIndex = 0
+
+    // function to show the current slide
+    function showSlide(index) {
+      slides.forEach((slide,i)=> {
+        if(i === index)
+          slide.classList.remove("hidden")
+        else
+          slide.classList.add("hidden")
+      })
+    }
+
+    // function to go to the next slide
+    function nextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1 + slides.length) % slides.length
+      showSlide(currentSlideIndex)
+    }
+
+    function prevSlide() {
+      currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length
+      showSlide(currentSlideIndex)
+    }
+
+    prevButton.addEventListener("click", prevSlide)
+    nextButton.addEventListener("click", nextSlide)
+
+    showSlide(currentSlideIndex)
+    //enable automatic slideshow
+    setInterval(nextSlide, 6000)
+    })  
+</script>

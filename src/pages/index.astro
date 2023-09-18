@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/sections/HeroSection.astro"
+import ThemeSection from "../components/sections/ThemeSection.astro";
+import Slider from "../components/Slider.astro";
+import { SITE_NAME, SITE_DESCRIPTION } from "../consts";
+---
+
+<BaseLayout title={SITE_NAME} description={SITE_DESCRIPTION}>
+  <HeroSection/>
+  <Slider />
+  <ThemeSection/>
+</BaseLayout>
+
