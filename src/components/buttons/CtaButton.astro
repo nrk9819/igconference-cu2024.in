@@ -1,12 +1,13 @@
 ---
 interface Props {
     link?: string,
+    download?: string
 }
 
-const {link} = Astro.props
+const {link, ...props} = Astro.props
 ---
 
-<button class="pl-16 md:pl-20 pr-6 md:pr-8 py-2.5 md:py-3 relative rounded-full bg-[#1A5112] hover:bg-[#C4DEBD] font-display text-[#C4DEBD] hover:text-[#1A5112] text-xl md:text-3xl transition-all ease-in-out duration-500">
-    {link ? <a href={link}><slot/></a> : <slot/>}
+<button class=`pl-16 md:pl-20 pr-6 md:pr-8 py-2.5 md:py-3 relative rounded-full bg-[#1A5112] hover:bg-[#C4DEBD] font-display text-[#C4DEBD] hover:text-[#1A5112] text-xl md:text-3xl transition-all ease-in-out duration-500`>
+    {link ? <a {...props} href={link}><slot/></a> : <slot/>}
     <img class="h-16 md:h-20 absolute bottom-0 left-0" src="/icons/tree.png">
 </button>

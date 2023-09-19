@@ -63,7 +63,5 @@ const images = await Astro.glob("../images/slider-*.jpg")
     nextButton.addEventListener("click", nextSlide)
 
     showSlide(currentSlideIndex)
-    //enable automatic slideshow
-    setInterval(nextSlide, 10000)
-    })  
+  })  
 </script>
