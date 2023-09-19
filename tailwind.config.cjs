@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Nelphim", "system-ui"],
+        display: ['Urbanist', "sans-serif"],
       },
     },
   },

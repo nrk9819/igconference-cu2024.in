@@ -16,13 +16,9 @@ const { title, description, image = '/default-banner.png' } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Fonts -->
-<link
-  rel="preload"
-  href="/fonts/Nelphim.otf"
-  as="font"
-  type="font/otf"
-  crossorigin
-/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600&display=swap" rel="stylesheet">
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
