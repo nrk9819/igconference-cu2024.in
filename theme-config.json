@@ -40,6 +40,30 @@
         "title": "Against this backdrop, the conference under the aegis of the Institute of Indian Geographers focuses on the following sub-themes for plenary discussions.",
         "button-text": "Explore More Themes"
       }
+    },
+    "themes": {
+      "heading-primary": "About the Conference and Themes",
+      "description": "Development, in its broadest context, aims to enhance the overall quality of life, spanning various dimensions. Throughout human history, it has been propelled by new ideas and technological innovations, influencing not only material progress but also freedom, culture, and ecological awareness. This interconnectedness is vital for our planet's long-term sustainability. However, contemporary society faces twin challenges. First, the escalating land use driven by population growth strains the environment and ecosystems. Second, natural resource depletion and climate change pose threats like water scarcity and extreme weather events. Unbridled consumerism, lacking adequate regulation, exacerbates gender disparities, have erased local production systems and cultures. Nevertheless, there's a growing recognition of region-specific cultural practices and regulations that foster resilient, sustainable production and consumption systems across India's diverse landscapes. This necessitates thorough documentation and analysis. Modern science and technology, including geo-spatial techniques, are essential allies, integrating indigenous wisdom with contemporary knowledge for sustainability. In our increasingly interconnected world, we must address persistent issues like poverty, inequality, and discrimination, alongside emerging challenges like climate change, environmental degradation, and shifting global power dynamics. The conference aims to address these multifaceted issues at local, regional, and global levels.",
+      "heading-secondary": "Subthemes",
+      "subheading": "Against this backdrop, the conference under the aegis of the Institute of Indian Geographers focuses on the following sub-themes for plenary discussions.",
+      "list": [
+        "Agriculture, culture of agriculture, resources management and livelihood in the changing environment.",
+        "Population of India: spatial dynamics and development, population and the environment",
+        "Hazards and disasters: indigenous disaster resilient approaches, policies and programmes of the state",
+        "Gender and space: Physical and institutional environment and gender in India, continuity and change",
+        "Landscape: Forms, processes, changes, and human intervention",
+        "Management of ecosystems, human activities and the ecosystems: adaptation and sustainability",
+        "Rural landscape, developments, and lesser known communities",
+        "Urban issues and problems, making urban settlements liveable",
+        "Modern geo-spatial techniques in development research in India",
+        "Traditional manufacturing and value adding sectors in India: dynamics of development and challenges",
+        "Flagship development programmes and welfare initiatives in India: Social, Economic and Environmental Outcomes",
+        "Geo-political issues in an interconnected world",
+        "Tourism development and the environment",
+        "Wetland, soil, and hydrology",
+        "Climate change and climate change like situations: trend and challenges",
+        " Any other areas that could be related to the theme of the Conference."
+      ]
     }
   }
 }

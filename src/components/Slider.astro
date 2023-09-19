@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 const images = await Astro.glob("../images/slider-*.jpg")
 ---
 
@@ -8,7 +9,7 @@ const images = await Astro.glob("../images/slider-*.jpg")
         {
             images.map((image,i) => (
             <div id="slide" class="fade hidden">
-                <img src={image.default.src} alt=`slide-${i+1}` class="w-full">
+                <Image src={image.default} alt=`slide image ${i+1}` />
             </div>
             ))
          }
@@ -16,7 +17,6 @@ const images = await Astro.glob("../images/slider-*.jpg")
     <button id="slide-prev" class="p-2 md:p-5 absolute top-1/2 rounded-r-lg bg-gray-800 opacity-50 hover:opacity-90 text-xl text-white transition duration-800">&#10094;</button>
     <button id="slide-next" class="p-2 md:p-5 absolute top-1/2 right-0 rounded-l-lg bg-gray-800 opacity-50 hover:opacity-90 text-l md:text-xl text-white transition duration-800">&#10095;</button>
 </div>
-
 
 <style>
  .fade {

@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Background from "../images/hero-bg.png"
+---
+
+<BaseLayout title="Themes" description="Against this backdrop, the conference under the aegis of the Institute of Indian Geographers focuses on the following sub-themes for plenary discussions.">
+    <section class=`px-4 py-20 md:py-32` style=`background-image: url('${Background.src}')`>
+        <div class="container mx-auto">
+            <h1 class="mb-6 md:mb-10 font-display font-semibold md:font-medium text-4xl md:text-6xl">Registration will start soon!</h1>
+        </div>
+    </section>
+</BaseLayout>
