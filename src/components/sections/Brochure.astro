@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import CtaButton from '../buttons/CtaButton.astro';
+import DefaultButton from '../buttons/DefaultButton.astro';
 import BrochureCover from "../../images/brochure-cover.jpg"
 ---
 
@@ -13,8 +13,9 @@ import BrochureCover from "../../images/brochure-cover.jpg"
           
             <Image class='drop-shadow-2xl' src={BrochureCover} alt="A bird sitting on a nest of eggs."/>
           
-            <div class="absolute bottom-8 left-2/4 z-20 drop-shadow-2xl shadow-slate-4900">
-                <CtaButton download="brochure.pdf" link='/brochure.pdf'>Dowload</CtaButton>
+            <div class="flex absolute bottom-8 right-2 z-20 gap-2 drop-shadow-xl shadow-slate-4900">
+                <DefaultButton style='outline' download="brochure.pdf" link='/brochure.pdf' >Download</DefaultButton>
+                <DefaultButton target='_blank' link='/brochure.pdf'>View</DefaultButton>
             </div>
             
           </div>
