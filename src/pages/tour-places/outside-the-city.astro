@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CoverImg from "../../images/tour/outside-the-city/cover.jpg"
+
+const title = "Places to visit outside the city"
+const description = "Outskirts of Guwahati, there are several beautiful places that worth a visit. The list includes Shillong, Dawki, Mawlynnong and a lot more."
+const places = [
+    {name: "Shillong", description: `Shillong is the capital and largest city of Meghalaya. It is often referred to as the      "Scotland of the East" due to its picturesque landscapes and pleasant climate.Some of the popular attractions in Shillong include Shillong Peak, which offers panoramic views of the city, Ward's Lake, Elephant Falls, and Don Bosco Museum, which showcases the culture and heritage of the region.Shillong is known for its vibrant culture and music scene, with a strong influence of Khasi culture.`},
+    {name: "Cherrapunjee (Cherrapunji)", description: "Cherrapunjee, known locally as Sohra, was once considered the wettest place on Earth due to its high annual rainfall. It is located about 50 kilometers from Shillong.The major attraction in Cherrapunjee is the Nohkalikai Falls, one of the tallest waterfalls in India. The landscape here is lush and green, with numerous cliffs and gorges.Mawsmai Cave and Eco Park, Double Decker Living Root Bridges, and the Seven Sisters Falls are some other notable places to visit in and around Cherrapunjee."},
+    {name: "Dawki", description: "Dawki is a small town located near the India-Bangladesh border, about 82 kilometers from Shillong.The main attraction in Dawki is the clear and pristine Umngot River, which is famous for its crystal-clear waters. Boating and river activities are popular here, and you can see the riverbed through the transparent water.Dawki is also known for the suspension bridge over the Umngot River, and it serves as an entry point to the neighboring country, Bangladesh."},
+]
+const placesImages = await Astro.glob("../../images/tour/outside-the-city/place-*.jpg")
+---
+
+<BaseLayout title={title} description={description}>
+    <Image 
+        src={CoverImg}
+        alt={title}
+        class:list={"w-[100vw]"}
+     />
+     <div class="px-4 py-16 md:py-24 ">
+        <div class="container mx-auto">
+            <h1 class="mb-6 md:mb-8 font-display text-3xl md:text-5xl">{title}</h1>
+            <p class="mb-6 md:mb-8 text-lg md:text-xl leading-relaxed">{description}</p>
+            {
+                places.map((place,i)=>(
+                    <Image
+                    src={placesImages[i].default}
+                    alt={title}
+                    class:list={"mt-12 md:mt-16 mb-6 md:mb-8"}
+                    />
+                    <h2 class="mb-3 md:mb-4 font-display text-2xl md:text-3xl">{place.name}</h2>
+                    <p class="text-lg md:text-xl">{place.description}</p>
+                ))
+            }
+        </div>
+    </div>
+</BaseLayout>

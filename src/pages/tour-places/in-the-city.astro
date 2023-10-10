@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CoverImg from "../../images/tour/in-the-city/cover.jpg"
+
+const title = "Places to visit in the city"
+const description = "Guwahati boasts stunning scenic beauty, with the mighty Brahmaputra River flowing through the heart of the city. The riverbank is adorned with lush greenery and parks, providing a picturesque backdrop for leisurely walks and picnics."
+const places = [
+    {name: "Kamakhya Temple", description: "Kamakhya Temple is one of the most famous Hindu temples in Guwahati and a major pilgrimage site. It is dedicated to the goddess Kamakhya and is known for its unique architecture and rituals."},
+    {name: "Assam State Zoo", description: "Also known as the Guwahati Zoo, it is home to a variety of animals, birds, and reptiles. It is a popular destination for families and wildlife enthusiasts."},
+    {name: "Umananda Island", description: "Located in the middle of the Brahmaputra River, this island houses the Umananda Temple dedicated to Lord Shiva. It can be reached by ferry and offers beautiful views of the river."},
+    {name: "Assam State Museum", description: "The museum showcases the rich cultural heritage of Assam through its collection of artifacts, sculptures, manuscripts, and more."},
+    {name: "Srimanta Sankardev Kalakshetra", description: "This cultural complex is dedicated to the 15th-century saint-scholar Srimanta Sankardev. It includes a museum, a library, an open-air theater, and various cultural exhibits."},
+    {name: "Navagraha Temple", description: "This temple is dedicated to the nine celestial bodies of Hindu astrology and is a significant religious site for devotees."},
+    {name: "Basistha Ashram", description: "Located in the southern part of Guwahati, this ashram is associated with the sage Basistha and is a serene place for meditation and spirituality."},
+    {name: "Balaji Temple", description: "The Balaji Temple is a replica of the Tirupati Balaji Temple and is a popular pilgrimage site for followers of Lord Venkateswara."},
+    {name: "Guwahati Planetarium", description: "This planetarium offers educational and entertaining shows about astronomy and the night sky."},
+    {name: "Pobitora Wildlife Sanctuary", description: "Although not in Guwahati itself, Pobitora is located nearby and is known for its high density of one-horned rhinoceroses, making it a must-visit for wildlife enthusiasts."},
+]
+const placesImages = await Astro.glob("../../images/tour/in-the-city/place-*.jpg")
+---
+
+<BaseLayout title={title} description={description}>
+    <Image 
+        src={CoverImg}
+        alt={title}
+        class:list={"w-[100vw]"}
+     />
+     <div class="px-4 py-16 md:py-24 ">
+        <div class="container mx-auto">
+            <h1 class="mb-6 md:mb-8 font-display text-3xl md:text-5xl">Best Places to Visit in the City</h1>
+            <p class="mb-6 md:mb-8 text-lg md:text-xl leading-relaxed">Guwahati boasts stunning scenic beauty, with the mighty Brahmaputra River flowing through the heart of the city. The riverbank is adorned with lush greenery and parks, providing a picturesque backdrop for leisurely walks and picnics. The nearby Kamakhya Temple, perched atop Nilachal Hill, offers panoramic views of the city and surrounding landscapes. The city is also surrounded by lush tea gardens, making it a paradise for nature enthusiasts.</p>
+            {
+                places.map((place,i)=>(
+                    <Image
+                    src={placesImages[i].default}
+                    alt={title}
+                    class:list={"mt-12 md:mt-16 mb-6 md:mb-8"}
+                    />
+                    <h2 class="mb-3 md:mb-4 font-display text-2xl md:text-3xl">{place.name}</h2>
+                    <p class="text-lg md:text-xl">{place.description}</p>
+                ))
+            }
+            
+        </div>
+    </div>
+</BaseLayout>

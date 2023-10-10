@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CoverImg from "../../images/tour/kaziranga.jpg"
+
+const title = "Kaziranga National Park"
+const description = "Kaziranga National Park is a renowned wildlife sanctuary located in the Indian state of Assam. It is famous for its remarkable conservation efforts and its significance in protecting the endangered one-horned Indian rhinoceros. Here is a short note about Kaziranga National Park"
+const places = [
+    {name: "Location", description: `Kaziranga National Park is situated in the northeastern state of Assam, India, along the banks of the Brahmaputra River. It covers an area of approximately 430 square kilometers.`},
+    {name: "Wildlife", description: "The Park is home to a diverse range of wildlife, with its most famous resident being the one-horned Indian rhinoceros. It also houses significant populations of tigers, elephants, wild water buffalo, swamp deer, and various bird species, making it a UNESCO World Heritage Site."},
+    {name: "Conservation", description: "Kaziranga plays a vital role in the conservation of the Indian rhinoceros, as it houses more than two-thirds of the world's population of this species. Conservation efforts here have been successful in safeguarding these rhinos from the brink of extinction."},
+    {name: "Ecosystem", description: "The Park features a unique mix of ecosystems, including tall grasslands, marshes, and dense forests. These habitats support a wide array of flora and fauna, contributing to the park's biodiversity."},
+    {name: "Challenges", description: "Kaziranga faces several conservation challenges, including poaching, habitat encroachment, and the seasonal flooding of the Brahmaputra River, which can displace wildlife and pose threats to their survival."},
+    {name: "Tourism", description: "The Park is a popular tourist destination, attracting wildlife enthusiasts and nature lovers from around the world. Visitors can explore the park through jeep safaris, elephant rides, and guided tours."},
+    {name: "Importance", description: "Beyond its role in preserving endangered species, Kaziranga National Park also holds cultural significance for the indigenous Assamese people and contributes to the region's biodiversity and ecosystem services."},
+]
+---
+
+<BaseLayout title={title} description={description}>
+    <Image 
+        src={CoverImg}
+        alt={title}
+        class:list={"w-[100vw]"}
+     />
+     <div class="px-4 py-16 md:py-24 ">
+        <div class="container mx-auto">
+            <h1 class="mb-6 md:mb-8 font-display text-3xl md:text-5xl">{title}</h1>
+            <p class="mb-6 md:mb-8 text-lg md:text-xl leading-relaxed">{description}</p>
+            {
+                places.map((place,i)=>(
+                    <h2 class="mb-3 md:mb-4 font-display text-2xl md:text-3xl">{place.name}</h2>
+                    <p class="mb-8 md:mb-12 text-lg md:text-xl">{place.description}</p>
+                ))
+            }
+            <p class="mb-6 md:mb-8 text-lg md:text-xl leading-relaxed">In summary, Kaziranga National Park is a remarkable conservation area in Assam, India, celebrated for its efforts in protecting the one-horned Indian rhinoceros and its rich biodiversity. It stands as a testament to successful wildlife conservation and sustainable tourism practices.</p>
+        </div>
+    </div>
+</BaseLayout>

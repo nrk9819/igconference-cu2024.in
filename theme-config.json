@@ -12,6 +12,10 @@
     "nav": {
       "menuItems": [
         {
+          "name": "Home",
+          "link": "/"
+        },
+        {
           "name": "About",
           "link": "/about"
         },
@@ -20,12 +24,20 @@
           "link": "/themes"
         },
         {
+          "name": "Guidelines",
+          "link": "/guidelines"
+        },
+        {
+          "name": "Abstracts",
+          "link": "/abstracts"
+        },
+        {
           "name": "Registration",
           "link": "/registration"
         },
         {
-          "name": "Guidelines",
-          "link": "/guidelines"
+          "name": "Tour",
+          "link": "/tour-places"
         }
       ]
     }

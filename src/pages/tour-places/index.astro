@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TourPlacesImg from "../../images/tour/cover.jpg"
+
+const title = "Tour Places"
+const description = `Guwahati is a vibrant and culturally rich city located in the northeastern state of Assam, India. It is often referred to as the "Gateway to the Northeast" due to its strategic location as the largest city in the region. Guwahati offers a unique blend of urban amenities and natural beauty, making it an appealing destination for tourists, especially during December and January.`
+const places = [ {title: "In the City", link: "in-the-city"}, {title: "Outside the City", link: "outside-the-city"}, {title: "Kaziranga National Park", link: "kaziranga"}]
+const images = await Astro.glob("../../images/tour/place-*.jpg")
+---
+
+<BaseLayout title={title} description={description} image={TourPlacesImg.src}>
+    <Image 
+        src={TourPlacesImg}
+        alt="Tour places"
+     />
+     <div class="px-4 py-16 md:py-24 bg-slate-800 border-b-2 border-slate-700">
+        <div class="container mx-auto">
+            <h1 class="mb-8 md:mb-10 font-display text-3xl md:text-5xl text-gray-100">Tour Remarkable Places in the City and Beyond</h1>
+            <p class="mb-6 md:mb-8 text-lg md:text-xl text-gray-300 leading-relaxed">Guwahati is a vibrant and culturally rich city located in the northeastern state of Assam, India. It is often referred to as the "Gateway to the Northeast" due to its strategic location as the largest city in the region. Guwahati offers a unique blend of urban amenities and natural beauty, making it an appealing destination for tourists, especially during December and January.</p>
+            <p class="mb-6 md:mb-8 text-lg md:text-xl text-gray-300 leading-relaxed">Guwahati boasts stunning scenic beauty, with the mighty Brahmaputra River flowing through the heart of the city. The riverbank is adorned with lush greenery and parks, providing a picturesque backdrop for leisurely walks and picnics. The nearby Kamakhya Temple, perched atop Nilachal Hill, offers panoramic views of the city and surrounding landscapes. The city is also surrounded by lush tea gardens, making it a paradise for nature enthusiasts.</p>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed">December and January are considered the winter months in Guwahati. During this time, the weather is cool and pleasant, with temperatures ranging from 10°C to 25°C (50°F to 77°F). The skies are often clear, making it an ideal time for outdoor activities and sightseeing. However, it's advisable to carry some warm clothing, especially for the cooler evenings and early mornings.</p>
+
+            <div class="mt-16 flex flex-col md:flex-row flex-wrap">
+                {
+                    places.map((place,i)=> (
+                        <a href=`tour-places/${place.link}` class=`pt-96 p-10 md:p-12 md:h-96 basis-1/3 flex flex-col justify-end` style=`background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${images[i].default.src}) center`>
+                            <h2 class="text-2xl md:text-3xl text-gray-100 drop-shadow-xl">{place.title}</h2>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+     </div>
+</BaseLayout>
