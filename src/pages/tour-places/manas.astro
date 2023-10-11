@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CoverImg from "../../images/tour/place-4.jpg"
+
+const title = "Manas National Park"
+const description = "Manas National Park is a UNESCO World Heritage Site located in the northeastern region of India, primarily in the state of Assam. It is known for its rich biodiversity and stunning natural beauty. Here are some key features and information about Manas National Park:"
+const places = [
+    {name: "Location", description: `Manas National Park is situated in the foothills of the Eastern Himalayas, along the border with Bhutan. It spans across the Baksa and Chirang districts of Assam and extends into Bhutan.`},
+    {name: "Biodiversity", description: "The park is renowned for its incredible biodiversity, making it one of the most significant wildlife conservation areas in India. It is home to various endangered and vulnerable species, including the Bengal tiger, Indian elephant, Indian rhinoceros, clouded leopard, golden langur, and several species of deer and antelope."},
+    {name: "River System", description: "The Manas River flows through the park, and its basin supports a unique ecosystem. The park's landscape consists of lush grasslands, dense forests, and wetlands, all of which are essential for the varied wildlife."},
+    {name: "UNESCO World Heritage Site", description: "Manas National Park was declared a UNESCO World Heritage Site in 1985. It was recognized not only for its diverse wildlife but also for its role in the conservation of the Bengal Florican, an endangered bird species."},
+    {name: "Project Tiger", description: "Manas is a part of the Project Tiger initiative, aimed at the conservation and protection of the Bengal tiger. Efforts have been made to rehabilitate and protect the tigers and their habitats in the park."},
+    {name: "Flora", description: "The park is home to a variety of plant species, including tropical evergreen forests, deciduous forests, and alluvial grasslands. Some of the tree species found here include sal, teak, and bamboo."},
+    {name: "Indigenous Communities", description: "The region around Manas National Park is inhabited by several indigenous communities, including the Bodo people. The park's conservation efforts have involved these communities and have sought to balance conservation with their traditional way of life."},
+    {name: "Birdwatching", description: "Manas is a paradise for birdwatchers, with over 450 species of birds, including the endangered Bengal Florican and various species of hornbills. It's a great place for ornithologists and nature enthusiasts."},
+    {name: "Activities", description: "Visitors to Manas National Park can enjoy activities such as wildlife safaris, elephant rides, and birdwatching. The park offers a unique opportunity to witness a wide range of wildlife in their natural habitat."},
+    {name: "Conservation Challenges", description: "Manas National Park has faced various challenges, including poaching, habitat destruction, and occasional civil unrest in the region. Conservation efforts have been ongoing to address these issues and protect the park's unique ecosystem."},
+]
+---
+
+<BaseLayout title={title} description={description}>
+    <Image 
+        src={CoverImg}
+        alt={title}
+        class:list={"w-[100vw]"}
+     />
+     <div class="px-4 py-16 md:py-24 ">
+        <div class="container mx-auto">
+            <h1 class="mb-6 md:mb-8 font-display text-3xl md:text-5xl">{title}</h1>
+            <p class="mb-6 md:mb-8 text-lg md:text-xl leading-relaxed">{description}</p>
+            {
+                places.map((place,i)=>(
+                    <h2 class="mb-3 md:mb-4 font-display text-2xl md:text-3xl">{place.name}</h2>
+                    <p class="mb-8 md:mb-12 text-lg md:text-xl">{place.description}</p>
+                ))
+            }
+            <p class="mb-6 md:mb-8 text-lg md:text-xl leading-relaxed">In summary, Kaziranga National Park is a remarkable conservation area in Assam, India, celebrated for its efforts in protecting the one-horned Indian rhinoceros and its rich biodiversity. It stands as a testament to successful wildlife conservation and sustainable tourism practices.</p>
+        </div>
+    </div>
+</BaseLayout>
