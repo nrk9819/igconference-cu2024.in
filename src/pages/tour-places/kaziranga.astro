@@ -13,7 +13,9 @@ const places = [
     {name: "Challenges", description: "Kaziranga faces several conservation challenges, including poaching, habitat encroachment, and the seasonal flooding of the Brahmaputra River, which can displace wildlife and pose threats to their survival."},
     {name: "Tourism", description: "The Park is a popular tourist destination, attracting wildlife enthusiasts and nature lovers from around the world. Visitors can explore the park through jeep safaris, elephant rides, and guided tours."},
     {name: "Importance", description: "Beyond its role in preserving endangered species, Kaziranga National Park also holds cultural significance for the indigenous Assamese people and contributes to the region's biodiversity and ecosystem services."},
+    {name: "Kaziranga Orchid National park", description: "The Kaziranga Orchid National park is an abode of more than 600 species of wild orchids collected from all across the north-east India region. This beautiful orchid have been placed amidst wild state in order to give complete natural ambience taking visitors as close to nature as possible. The whole variety is preserved in a greenhouse together with some hybrid varieties; some of them have been exclusively collected from local region of the state"},
 ]
+const images = await Astro.glob("../../images/tour/kaziranga/img-*.jpg")
 ---
 
 <BaseLayout title={title} description={description}>
@@ -28,6 +30,11 @@ const places = [
             <p class="mb-6 md:mb-8 text-lg md:text-xl leading-relaxed">{description}</p>
             {
                 places.map((place,i)=>(
+                <Image
+                    src={images[i].default}
+                    alt={title}
+                    class:list={"mt-12 md:mt-16 mb-6 md:mb-8"}
+                    />
                     <h2 class="mb-3 md:mb-4 font-display text-2xl md:text-3xl">{place.name}</h2>
                     <p class="mb-8 md:mb-12 text-lg md:text-xl">{place.description}</p>
                 ))
