@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Background from "../images/hero-bg.png"
+
+const title = "Registration",
+description = "Registration process for the Conference will be done in online mode for the Indian delegates. This page will provide all the features regarding the Registration process. This page will collect the data of visiting delegates for management in the conference."
 ---
 
-<BaseLayout title="Themes" description="Against this backdrop, the conference under the aegis of the Institute of Indian Geographers focuses on the following sub-themes for plenary discussions.">
+<BaseLayout title={title} description={description}>
     <section class=`px-4 py-20 md:py-32` style=`background-image: url('${Background.src}')`>
         <div class="container mx-auto">
             <h1 class="mb-6 md:mb-10 font-display font-semibold md:font-medium text-4xl md:text-6xl">To be announced soon</h1>

@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Background from "../images/hero-bg.png"
+
+const title = "About 44th IIG Conference"
+const description = "The Cotton University previously known as Cotton College established on 1901 is pioneer of Higher education in the North East India. The Department of Geography established on 1959 is an integral part of the University."
 ---
 
-<BaseLayout title="About 44th IIG Conference" description="About 44th IIG Conference">
+<BaseLayout title={title} description={description}>
     <section class=`px-4 py-20 md:py-32` style=`background-image: url('${Background.src}')`>
         <div class="container mx-auto">
            <h1 class="mb-4 md:mb-8 font-display text-3xl md:text-5xl">About Cotton University</h1>

@@ -2,7 +2,7 @@
   "site": {
     "name": "IIG Conference CU, 2024",
     "url": "https://iigconference-cu2024.in",
-    "description": "IIG Conference at Cotton University, 2024"
+    "description": "The 44th IIG Meet and International Conference going to be organized by The Department of Geography, Cotton University. The international Conference will be held from 22nd to 24th of January 2024. The conference will attract many scholars from the country and around the world which will produce quality research papers in various fields of earth science and social science and benefit the society as a whole."
   },
   "header": {
     "topbar": {
@@ -36,8 +36,8 @@
           "link": "/registration"
         },
         {
-          "name": "Tour",
-          "link": "/tour-places"
+          "name": "Sights",
+          "link": "/sights"
         }
       ]
     }
