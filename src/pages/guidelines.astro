@@ -2,14 +2,17 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Background from "../images/hero-bg.png"
 
-const title = "Themes",
-description = "Against this backdrop, the conference under the aegis of the Institute of Indian Geographers focuses on the following sub-themes for plenary discussions."
+const title = "Guidelines",
+description = "IIG has instituted an award for the best paper presented by a single author of below the age of 30. The participants must be Indian Nationals and from the discipline of Geography. Young scholars interested to take part in the competition must send an abstract of about 500 words by the deadline of November 07, 2023, along with registration fee to be considered for the award. They are also required to submit the full paper by December 15, 2023. The young scholars/faculty need to get a certificate from the institution they belong to indicating their status and proof on age which should be sent along with the abstract. A committee will evaluate the quality of the submission and selected participants will be informed about the status of their submission by 21st December 2023. Unsuccessful candidates will however be allowed to present their papers in the relevant technical sessions."
 ---
 
 <BaseLayout title={title} description={description}>
     <section class=`px-4 py-20 md:py-32` style=`background-image: url('${Background.src}')`>
         <div class="container mx-auto">
-            <h1 class="mb-6 md:mb-10 font-display font-semibold md:font-medium text-4xl md:text-6xl">To be announced soon</h1>
+            <h1 class="mb-6 md:mb-10 font-display font-semibold md:font-medium text-4xl md:text-6xl">Guidelines for Young Geographer Award</h1>
+            <p class="mb-16 md:mb-20 text-lg md:text-xl leading-relaxed">
+                {description}
+            </p>
         </div>
     </section>
 </BaseLayout>
