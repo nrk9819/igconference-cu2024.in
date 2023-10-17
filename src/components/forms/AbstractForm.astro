@@ -68,7 +68,7 @@
         <h2 class="text-xl font-medium">Abstract Details</h2>
     </div>
     <div class="px-8 md:px-12 py-6 bg-white">
-        <form action="#" method="post" enctype="multipart/form-data"  class="text-md md:text-lg">
+        <form id="myForm" enctype="multipart/form-data"  class="text-md md:text-lg">
              <!-- Title of the Paper -->
           <div class="mb-6">
             <label for="paper_title" class="block mb-2">Title of the Paper</label>
@@ -130,4 +130,17 @@
                 if(authorCounter === 5) addAuthorBtn.disabled = true
         } 
     })
+
+
+    const form = document.getElementById("myForm");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the default form submission.
+
+                // Display an alert when the form is submitted.
+                alert("Form submitted");
+
+                // Refresh the page after the user clicks "OK".
+                location.reload();
+            });
 </script>
