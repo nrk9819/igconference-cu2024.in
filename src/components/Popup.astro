@@ -1,0 +1,27 @@
+<div class="popup-overlay hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50" id="popup">
+    <div class="popup-card bg-white p-6 rounded shadow-md text-center" id="popup-card">
+        <!-- Content for the popup card goes here -->
+        <p id="popup-content" class="text-xl"></p>
+        <button id="close-popup" class="mt-4 px-4 py-2 bg-green-800 text-white rounded">Close</button>
+    </div>
+</div>
+
+<script>
+    const popup = document.getElementById("popup");
+    const closePopupButton = document.getElementById("close-popup");
+    const body = document.body;
+
+    if(!popup.classList.contains("hidden")) {
+        body.classList.add("overflow-hidden");
+    }
+
+    function hidePopup() {
+        popup.classList.add("hidden")
+        body.classList.remove("overflow-hidden")
+        location.reload();
+    }
+
+    closePopupButton.addEventListener("click", function() {
+    hidePopup();
+});
+</script>

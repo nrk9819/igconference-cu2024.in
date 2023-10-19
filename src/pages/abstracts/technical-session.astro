@@ -1,13 +1,15 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Popup from "../../components/Popup.astro";
 import GeneralInfoForm from "../../components/forms/GeneralInfoForm.astro";
 import AbstractDetailsForm from "../../components/forms/AbstractDetailsForm.astro";
 
-const title = "Abstracts for Young Geographers Award"
+const title = "Abstracts for Technical Session"
 const description = "IIG has instituted an award for the best paper presented by a single author of below the age of 30. The participants must be Indian Nationals and from the discipline of Geography."
 ---
 
 <BaseLayout title={title} description={description}>
+    <Popup/>
     <section class="bg-slate-100">
         <div class="container px-4 py-12 md:py-16 mx-auto">
             <h1 class="mb-4 md:mb-6 text-2xl md:text-4xl">Abstract for Technical Session</h1>
@@ -41,8 +43,11 @@ const description = "IIG has instituted an award for the best paper presented by
 
 <script>
     import validateForm from "../../scripts/validate-form"
+    import handleForms from "../../scripts/handle-forms"
     const submitFormsBtn = document.getElementById('submit_forms')
     const addCoAuthorBtn = document.getElementById('add_co_author')
+    const popup = document.getElementById('popup')
+    const popupContent = document.getElementById("popup-content")
     let currentCoAuthor = 0
 
     function addCoAuthor() {
@@ -66,16 +71,11 @@ const description = "IIG has instituted an award for the best paper presented by
         
         forms.forEach(form => validateForm(form) !== true && errors.push(validateForm(form)) )
 
-        // const authorData = new FormData(authorForm)
-        // const abstractData = new FormData(abstractForm)
-
-        // const allFormData = {
-        //     authorForm: Object.fromEntries(authorData),
-        //     abstractForm: Object.fromEntries(abstractData)
-        // }
-        // console.log(allFormData)
-
         if(errors.length !== 0) alert(errors.join("\n\n"))
+        else {
+            popup.classList.remove("hidden")
+            popupContent.textContent = "Form Submitted Successfully!"
+        }
     }
 
     submitFormsBtn.addEventListener('click', submitForms)

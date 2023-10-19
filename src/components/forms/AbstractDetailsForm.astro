@@ -37,7 +37,7 @@ const {id, form_id, word_count} = Astro.props
             <!-- Sub themes -->
           <div class="mb-6">
             <label for="paper_title" class="block mb-2">Subtheme</label>
-            <select id="subthemes" name="subthemes" class="form-control" class:list={"w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white"}>
+            <select id="subtheme" name="subtheme" class="form-control" class:list={"w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white"}>
             {
                 subThemes.map(subtheme => (
                     <option value={subtheme}>{subtheme}</option>
@@ -49,13 +49,13 @@ const {id, form_id, word_count} = Astro.props
         <!-- Name of the Author (Corresponding Author) -->
         <div class="mb-6">
             <label for="author_name" class="block mb-2">Name of the Author (Corresponding Author)</label>
-            <input type="text" id="author_name" name="author_name" required class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
+            <input type="text" id="author_name" name="tmp_author_name" class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
         </div>
 
         <!-- Email of Corresponding Author -->
         <div class="mb-6">
             <label for="author_email" class="block mb-2">Email of Corresponding Author</label>
-            <input type="email" id="author_email" name="author_email" required class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
+            <input type="email" id="author_email" name="tmp_author_email" class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
         </div>
 
         <!-- Additional Authors -->
@@ -91,9 +91,9 @@ addAuthorBtn.addEventListener('click', () => {
         authorDiv.classList.add("mb-6")
         authorDiv.innerHTML = `
                 <label for="author_name_${authorCounter}" class="block mb-2">Name of Author ${authorCounter}:</label>
-                <input type="text" id="author_name_${authorCounter}" name="author_name_${authorCounter}" required class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
+                <input type="text" id="author_name_${authorCounter}" name="tmp_author_name_${authorCounter}" required class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
                 <label for="author_email_${authorCounter}" class="block mb-2">Email of Author ${authorCounter}:</label>
-                <input type="email" id="author_email_${authorCounter}" name="author_email_${authorCounter}" required class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
+                <input type="email" id="author_email_${authorCounter}" name="tmp_author_email_${authorCounter}" required class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
             `;
         additionalAuthorsContainer.appendChild(authorDiv);
 
