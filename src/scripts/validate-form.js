@@ -22,7 +22,9 @@ export default function validateForm(form) {
   }
 
   if (errors.length > 0) {
-    return `${errors.join("\n")}`;
+    return `The form "${form.name}" have the following errors :\n${errors.join(
+      "\n",
+    )}`;
   }
 
   return true;

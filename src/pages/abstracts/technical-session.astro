@@ -15,17 +15,17 @@ const description = "IIG has instituted an award for the best paper presented by
             </p>
 
             <!-- General Information for main author-->
-            <GeneralInfoForm id="author" form_id="author_form" author_type="Corresponding Author" />
+            <GeneralInfoForm id="author" form_id="author_form" heading="General Information of Corresponding Author" />
             <!-- General Information for co author 1-->
-            <GeneralInfoForm id="co_author_1" form_id="co_author_form_1" author_type="First Co-author" form_type="secondary" />
+            <GeneralInfoForm id="co_author_1" form_id="co_author_form_1" heading="General Information of First Co-author" form_type="secondary" />
             <!-- General Information for co author 2-->
-            <GeneralInfoForm id="co_author_2" form_id="co_author_form_2" author_type="Second Co-author" form_type="secondary" />
+            <GeneralInfoForm id="co_author_2" form_id="co_author_form_2" heading="General Information of Second Co-author" form_type="secondary" />
             <!-- General Information for co author 3-->
-            <GeneralInfoForm id="co_author_3" form_id="co_author_form_3" author_type="Third Co-author" form_type="secondary" />
+            <GeneralInfoForm id="co_author_3" form_id="co_author_form_3" heading="General Information of Third Co-author" form_type="secondary" />
             <!-- General Information for co author 4-->
-            <GeneralInfoForm id="co_author_4" form_id="co_author_form_4" author_type="Fourth Co-author" form_type="secondary" />
+            <GeneralInfoForm id="co_author_4" form_id="co_author_form_4" heading="General Information of Fourth Co-author" form_type="secondary" />
             <!-- General Information for co author 5-->
-            <GeneralInfoForm id="co_author_5" form_id="co_author_form_5" author_type="Fifth Co-author" form_type="secondary" />
+            <GeneralInfoForm id="co_author_5" form_id="co_author_form_5" heading="General Information of Fifth Co-author" form_type="secondary" />
 
             <!-- Add co-author -->
             <button type="button" id="add_co_author" class="block ml-auto mb-6 md:mb-10 py-2 px-4 text-md md:text-lg text-green-900 disabled:text-gray-400 rounded-xl bg-green-300 disabled:bg-gray-200">Add Co-Author</button>
@@ -58,12 +58,14 @@ const description = "IIG has instituted an award for the best paper presented by
         const authorForm = document.getElementById('author_form')
         const abstractForm = document.getElementById('abstract_form')
         const forms = [authorForm, abstractForm]
+        const errors = []
 
-        for (let i =0; i<=currentCoAuthor; i++) {
-            forms.push(`coAuthorForm${i}`)
-            forms[-1] = document.getElementById(`co_author_form_${i}`)
+        for (let i=1; i<=currentCoAuthor; i++) {
+            forms.push(document.getElementById(`co_author_form_${i}`))
         }
         
+        forms.forEach(form => validateForm(form) !== true && errors.push(validateForm(form)) )
+
         // const authorData = new FormData(authorForm)
         // const abstractData = new FormData(abstractForm)
 
@@ -73,7 +75,7 @@ const description = "IIG has instituted an award for the best paper presented by
         // }
         // console.log(allFormData)
 
-        console.log(validateForm(authorForm))
+        if(errors.length !== 0) alert(errors.join("\n\n"))
     }
 
     submitFormsBtn.addEventListener('click', submitForms)

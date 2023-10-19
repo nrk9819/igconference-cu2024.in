@@ -14,10 +14,10 @@ const description = "IIG has instituted an award for the best paper presented by
             <p class="mb-8 md:mb-12 text-lg md:text-xl text-slate-600 leading-relaxed">Young scholars interested to take part in the competition must send an abstract of about 500 words by the deadline of November 07, 2023. For further details check <a href="/guidelines" class="underline">Guidelines</a> page on the Website.
             </p>
             <!-- General Information for main author-->
-            <GeneralInfoForm id="author" form_id="author_form" author_type="Young Geographer" />
+            <GeneralInfoForm id="author" form_id="author_form" heading="General Information" />
            
             <!-- Abstract Details Form -->
-            <AbstractDetailsForm form_id="abstract_form" word_count="300"/>
+            <AbstractDetailsForm form_id="abstract_form" word_count="500"/>
 
             <!-- Button to submit multiple forms -->
             <button id="submit_forms" class=`w-full mb-8 px-5 md:px-6 py-3 md:py-4 rounded-b-lg font-medium md:text-lg text-white disabled:opacity-40 leading-none bg-green-900 disabled:bg-gray-400 enabled:hover:bg-green-800`>Submit Form</button>
@@ -25,3 +25,33 @@ const description = "IIG has instituted an award for the best paper presented by
         </div>
     </section>
 </BaseLayout>
+
+
+<script>
+    import validateForm from "../../scripts/validate-form"
+    const submitFormsBtn = document.getElementById('submit_forms')
+    
+    // function to handle form submission
+    function submitForms() {
+        const authorForm = document.getElementById('author_form')
+        const abstractForm = document.getElementById('abstract_form')
+        const forms = [authorForm, abstractForm]
+        const errors = []
+       
+         forms.forEach(form => validateForm(form) !== true && errors.push(validateForm(form)) )
+
+        // const authorData = new FormData(authorForm)
+        // const abstractData = new FormData(abstractForm)
+
+        // const allFormData = {
+        //     authorForm: Object.fromEntries(authorData),
+        //     abstractForm: Object.fromEntries(abstractData)
+        // }
+        // console.log(allFormData)
+
+        if(errors.length !== 0) alert(errors.join("\n\n"))
+    }
+
+    submitFormsBtn.addEventListener('click', submitForms)
+    
+</script>
