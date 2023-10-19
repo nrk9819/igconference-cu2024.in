@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import TechnicalSessionForm from "../../components/forms/TechnicalSessionForm.astro"
+import GeneralInfoForm from "../../components/forms/GeneralInfoForm.astro";
+import AbstractDetailsForm from "../../components/forms/AbstractDetailsForm.astro";
 
 const title = "Abstracts for Young Geographers Award"
 const description = "IIG has instituted an award for the best paper presented by a single author of below the age of 30. The participants must be Indian Nationals and from the discipline of Geography."
@@ -12,7 +13,69 @@ const description = "IIG has instituted an award for the best paper presented by
             <h1 class="mb-4 md:mb-6 text-2xl md:text-4xl">Abstract for Technical Session</h1>
             <p class="mb-8 md:mb-12 text-lg md:text-xl text-slate-600 leading-relaxed">For any queries mail at iigconference2024@cottonuniversity.ac.in
             </p>
-            <TechnicalSessionForm/>
+
+            <!-- General Information for main author-->
+            <GeneralInfoForm id="author" form_id="author_form" author_type="Corresponding Author" />
+            <!-- General Information for co author 1-->
+            <GeneralInfoForm id="co_author_1" form_id="co_author_form_1" author_type="First Co-author" form_type="secondary" />
+            <!-- General Information for co author 2-->
+            <GeneralInfoForm id="co_author_2" form_id="co_author_form_2" author_type="Second Co-author" form_type="secondary" />
+            <!-- General Information for co author 3-->
+            <GeneralInfoForm id="co_author_3" form_id="co_author_form_3" author_type="Third Co-author" form_type="secondary" />
+            <!-- General Information for co author 4-->
+            <GeneralInfoForm id="co_author_4" form_id="co_author_form_4" author_type="Fourth Co-author" form_type="secondary" />
+            <!-- General Information for co author 5-->
+            <GeneralInfoForm id="co_author_5" form_id="co_author_form_5" author_type="Fifth Co-author" form_type="secondary" />
+
+            <!-- Add co-author -->
+            <button type="button" id="add_co_author" class="block ml-auto mb-6 md:mb-10 py-2 px-4 text-md md:text-lg text-green-900 disabled:text-gray-400 rounded-xl bg-green-300 disabled:bg-gray-200">Add Co-Author</button>
+
+            <!-- Abstract Details Form -->
+            <AbstractDetailsForm form_id="abstract_form" word_count="300"/>
+
+            <!-- Button to submit multiple forms -->
+            <button id="submit_forms" class=`w-full mb-8 px-5 md:px-6 py-3 md:py-4 rounded-b-lg font-medium md:text-lg text-white disabled:opacity-40 leading-none bg-green-900 disabled:bg-gray-400 enabled:hover:bg-green-800`>Submit Form</button>
         </div>
     </section>
 </BaseLayout>
+
+<script>
+    import validateForm from "../../scripts/validate-form"
+    const submitFormsBtn = document.getElementById('submit_forms')
+    const addCoAuthorBtn = document.getElementById('add_co_author')
+    let currentCoAuthor = 0
+
+    function addCoAuthor() {
+        currentCoAuthor++
+        document.getElementById(`co_author_${currentCoAuthor}`).classList.remove("hidden")
+        if(currentCoAuthor === 5) addCoAuthorBtn.disabled = true
+    }
+
+    addCoAuthorBtn.addEventListener("click", addCoAuthor)
+
+    // function to handle form submission
+    function submitForms() {
+        const authorForm = document.getElementById('author_form')
+        const abstractForm = document.getElementById('abstract_form')
+        const forms = [authorForm, abstractForm]
+
+        for (let i =0; i<=currentCoAuthor; i++) {
+            forms.push(`coAuthorForm${i}`)
+            forms[-1] = document.getElementById(`co_author_form_${i}`)
+        }
+        
+        // const authorData = new FormData(authorForm)
+        // const abstractData = new FormData(abstractForm)
+
+        // const allFormData = {
+        //     authorForm: Object.fromEntries(authorData),
+        //     abstractForm: Object.fromEntries(abstractData)
+        // }
+        // console.log(allFormData)
+
+        console.log(validateForm(authorForm))
+    }
+
+    submitFormsBtn.addEventListener('click', submitForms)
+    
+</script>
