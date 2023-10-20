@@ -67,13 +67,13 @@ const {id, form_id, word_count} = Astro.props
         <!-- Abstract -->
         <div class="mb-6">
             <label for="abstract" class="block mb-2">Abstract (Maximum number of words is {word_count})</label>
-            <textarea id="abstract" name="abstract" class="w-full h-96 py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white"></textarea>
+            <textarea id="abstract" name="abstract" class="w-full h-96 py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white" required></textarea>
         </div>
 
         <!-- Keywords (Up to 5 semicolon-separated values) -->
         <div class="mb-6">
             <label for="keywords" class="block mb-2">Keywords (Up to 5 semicolon-separated values)</label>
-            <input type="text" id="keywords" name="keywords" class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white">
+            <input type="text" id="keywords" name="keywords" class="w-full py-3 px-4 border rounded border-slate-300 bg-slate-50 focus:bg-white" required>
         </div>
     </form>
     </div>
