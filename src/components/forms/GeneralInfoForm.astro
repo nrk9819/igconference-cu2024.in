@@ -1,7 +1,7 @@
 ---
 import {countriesList} from "../../scripts/countries-list"
 
-const {id, heading, form_type, form_id, ...props} = Astro.props
+const {id, heading, form_type, page="technical-session", form_id, ...props} = Astro.props
 ---
 
 <div {...props} id={id} class=`mb-8 md:mb-10 flex flex-col rounded-lg overflow-hidden border border-slate-200 ${form_type=="secondary" && "hidden"}`>
@@ -69,17 +69,23 @@ const {id, heading, form_type, form_id, ...props} = Astro.props
                  </div>
             </div>
     
-            <!-- Certificate from Institution for their Status (Image Upload) -->
-            <div class="mb-8">
+           {
+                page!== "technical-session" && (
+                <!-- Certificate from Institution for their Status (Image Upload) -->
+                <div class="mb-8">
                 <label for="certificate" class="block mb-4">Certificate from Institution for their status (JPEG or PNG only)</label>
                 <input type="file" id="certificate" name="certificate" accept=".jpeg, .jpg, .png" required>
             </div>
-    
             <!-- Age Proof (Image Upload) -->
             <div class="mb-6">
                 <label for="age_proof" class="block mb-4">Age Proof (AADHAR/PAN in JPEG or PNG only)</label>
                 <input type="file" id="age_proof" name="age_proof" accept=".jpeg, .jpg, .png" required>
             </div>
+                )
+            }
+            
+    
+           
         </form>
     </div>
 </div>
