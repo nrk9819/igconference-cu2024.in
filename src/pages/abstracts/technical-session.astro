@@ -43,7 +43,9 @@ const description = "IIG has instituted an award for the best paper presented by
 
 <script>
     import validateForm from "../../scripts/validate-form"
-    import handleForms from "../../scripts/handle-forms"
+    import submitForms from "../../scripts/submit-forms.js"
+    import createFormData from "../../scripts/create-formdata.js"
+
     const submitFormsBtn = document.getElementById('submit_forms')
     const addCoAuthorBtn = document.getElementById('add_co_author')
     const popup = document.getElementById('popup')
@@ -59,7 +61,7 @@ const description = "IIG has instituted an award for the best paper presented by
     addCoAuthorBtn.addEventListener("click", addCoAuthor)
 
     // function to handle form submission
-    function submitForms() {
+    async function handleForms() {
         const authorForm = document.getElementById('author_form')
         const abstractForm = document.getElementById('abstract_form')
         const forms = [authorForm, abstractForm]
@@ -73,11 +75,13 @@ const description = "IIG has instituted an award for the best paper presented by
 
         if(errors.length !== 0) alert(errors.join("\n\n"))
         else {
+            const formData = createFormData(forms,"technical_session")
+            const res = await submitForms(formData)
             popup.classList.remove("hidden")
-            popupContent.textContent = "Form Submitted Successfully!"
+            popupContent.textContent = res
         }
     }
 
-    submitFormsBtn.addEventListener('click', submitForms)
+    await submitFormsBtn.addEventListener('click', handleForms)
     
 </script>

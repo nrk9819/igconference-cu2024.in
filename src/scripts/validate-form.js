@@ -11,11 +11,6 @@ export default function validateForm(form) {
       errors.push(`Invalid email in field '${input.name}'.`);
     }
 
-    // check for phone field
-    if (fieldType === "tel" && !validatePhoneNumber(value)) {
-      errors.push(`Invalid phone number in field '${input.name}'.`);
-    }
-
     if (value.length === 0) {
       errors.push(`Field '${input.name}' is required.`);
     }
@@ -33,9 +28,4 @@ export default function validateForm(form) {
 function validateEmail(email) {
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return emailPattern.test(email);
-}
-
-function validatePhoneNumber(phone) {
-  const phonePattern = /^\d{10,}$/;
-  return phonePattern.test(phone);
 }
