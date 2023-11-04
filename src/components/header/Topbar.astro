@@ -6,11 +6,52 @@ interface Props {
 }
 
 const {id} = Astro.props
+
+//The date for submission of Abstracts has been extended to 12th November 2023.
 ---
 
 <div id={id} class="py-3 px-4 md:py-4 bg-slate-800 text-white">
-    <div class="container mx-auto flex justify-between gap-4 text-xs md:text-base">
-        <p>{TOPBAR_LEFT}</p>
-        <p>22<sup>nd</sup> to 24<sup>th</sup> January, 2024</p>
+    <div id="scroll-container" class="container mx-auto flex justify-between gap-4 text-xs md:text-base">
+            <p>{TOPBAR_LEFT}</p>
+            <p>The date for submission of Abstracts has been extended to 12th November 2023.</p>
+            <p>22<sup>nd</sup> to 24<sup>th</sup> January, 2024</p>
     </div>
   </div>
+
+<style>
+    #scroll-container {
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  
+  -moz-animation: my-animation 30s linear infinite;
+  -webkit-animation: my-animation 30s linear infinite;
+  animation: my-animation 30s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from { -moz-transform: translateX(100%); }
+  to { -moz-transform: translateX(-100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(100%); }
+  to { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+</style>
