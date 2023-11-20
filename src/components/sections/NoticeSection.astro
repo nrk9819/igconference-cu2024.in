@@ -1,0 +1,22 @@
+---
+import Callout from "../Callout.astro";
+
+interface Notice {
+    type: "New" | "Expired",
+    text: String
+}
+
+const notices: Notice[] = [
+    {type: "New" , text: "Due to the extension of last date of abstract submission, there is a slight delay in sending the acceptance letters."},
+    {type: "Expired" , text: "The date for submission of Abstracts has been extended to 12th November 2023."},
+    {type: "Expired" , text: "The date for submission of Abstracts has been extended to 19th November 2023."}
+]
+---
+
+<section id="notice" class="container mx-auto px-4 py-20 md:py-32 flex flex-col justify-center items-center border-t">
+    {
+        notices.map(notice => 
+            <Callout type={notice.type} text={notice.text} />
+        )
+    }
+</section>

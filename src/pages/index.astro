@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSection from "../components/sections/HeroSection.astro"
+import NoticeSection from "../components/sections/NoticeSection.astro"
 import ThemeSection from "../components/sections/ThemeSection.astro";
 import { SITE_NAME, SITE_DESCRIPTION } from "../consts";
 import Brochure from "../components/sections/Brochure.astro";
@@ -9,6 +10,7 @@ import Brochure from "../components/sections/Brochure.astro";
 <BaseLayout title={SITE_NAME} description={SITE_DESCRIPTION}>
   <HeroSection/>
   <ThemeSection/>
+  <NoticeSection/>
   <Brochure/>
 </BaseLayout>
 
