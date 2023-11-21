@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Callout from "../components/Callout.astro";
+import Hotel from "../components/Hotel.astro";
+import {hotelsList} from "../data/hotels.ts"
+
+const title = "Accomodation"
+const description = "Limited accommodation of single occupancy, double and triple sharing could be booked through the organizer on advance payment. Self booking is also available in a list of nearby hotels."
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="container px-4 py-16 md:py-24 mx-auto border-b border-slate-200">
+            <h1 class="mb-8 md:mb-10 font-display text-3xl md:text-5xl text-gray-900">Accomodation</h1>
+            <Callout text={"The organisers have kept two options to explore and avail accommodation for the participants "} type="Info" />
+            <h2 class="mt-12 md:mt-16 mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Limited accommodation of single occupancy, double and triple sharing could be booked through the organizer on advance payment </h2>
+            <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">Rooms Available at North East Diocesan Social Forum, Kharghuli, Guwahati North East India Regional Bishop’s Council, Kharghuli. Bookings can be done through the organizers on 1st cum 1st serve basis at the rates given below. The rates include GST and transportation to and from the conference venue in the morning and in the evening. Those who book accommodation through the organizers should report at the venue.  
+            </p>
+            <Hotel name="North East Diocesan Social Forum" rooms={["Single Room Non AC: 1200 INR Per Person Per Night",
+            "Twin Sharing Room Non AC: 700 INR Per Person Per Night",
+            "Triple Sharing Room Non AC: 700 INR Per Person Per Night",]}
+             mapLink={new URL("https://maps.app.goo.gl/8vCLL5Sn11dyCaMw7")}
+            />
+            <Hotel name="North East India Regional Bishop's Council" rooms={["Twin sharing Rooms: 700 INR Per Person Per Night"]}
+             mapLink={new URL("https://maps.app.goo.gl/8vCLL5Sn11dyCaMw7")}
+            />
+    </div>
+    <div class="container px-4 py-16 md:py-24 mx-auto border-slate-200">
+       <h2 class=" mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Self-Booking </h2>
+        <p class="mb-6 md:mb-8 text-lg md:text-xl text-gray-800 leading-relaxed">A list of hotels with address and contact information, rates and distance from venue is provided for perusal of the participants. Participants are requested to book rooms on their own.  
+        </p>
+        {hotelsList.map(hotel => (
+                <Hotel name={hotel.name} distance={hotel.distance} rooms={hotel.rooms} address={hotel.address} contacts={hotel.contacts} mapLink={hotel.mapLink}/>
+        ))}
+</div>
+</BaseLayout>../data/hotels.TS
