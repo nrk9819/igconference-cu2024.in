@@ -1,18 +1,26 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Background from "../images/hero-bg.png"
+import RegistrationTable from "../components/RegistrationTable.astro";
+import PaymentDetails from "../components/PaymentDetails.astro";
 
 const title = "Guidelines",
 description = "IIG has instituted an award for the best paper presented by a single author of below the age of 30. The participants must be Indian Nationals and from the discipline of Geography. Young scholars interested to take part in the competition must send an abstract of about 500 words by the deadline of November 07, 2023, along with registration fee to be considered for the award. They are also required to submit the full paper by December 15, 2023. The young scholars/faculty need to get a certificate from the institution they belong to indicating their status and proof on age which should be sent along with the abstract. A committee will evaluate the quality of the submission and selected participants will be informed about the status of their submission by 21st December 2023. Unsuccessful candidates will however be allowed to present their papers in the relevant technical sessions."
 ---
 
 <BaseLayout title={title} description={description}>
-    <section class=`px-4 py-20 md:py-32` style=`background-image: url('${Background.src}')`>
-        <div class="container mx-auto">
-            <h1 class="mb-6 md:mb-10 font-display font-semibold md:font-medium text-4xl md:text-6xl">Guidelines for Young Geographer Award</h1>
-            <p class="mb-16 md:mb-20 text-lg md:text-xl leading-relaxed">
-                {description}
+    <div class="container px-4 py-16 md:py-24 mx-auto border-b border-slate-200">
+            <h1 class="mb-8 md:mb-10 font-display text-3xl md:text-5xl text-gray-900">Guidelines</h1>
+            <h2 class="mt-12 md:mt-16 mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Registration Guidelines</h2>
+            <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">Payment completion for registration is required before submitting the <a href="/registration" class="underline text-blue-600">registration form</a>. Details about registration fees and bank credentials is provided below.
             </p>
-        </div>
-    </section>
+            <RegistrationTable/>
+            <PaymentDetails/>
+        
+            <h2 class="mt-12 md:mt-16 mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Accomodation Guidelines</h2>
+            <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">Accomodation can be booked through the organisers and by yourself (<a href="/accomodation" class="underline text-blue-600">check more details</a>)
+            </p>
+            <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">If you are booking your accomodation through the organisers, please choose accomodation options below. It will generate an invoice, which will be downloaded automatically. After downloading the invoice, contact the organizers through <a href="mailto:iigconference2024@cottonuniversity.ac.in" class="underline">iigconference2024@cottonuniversity.ac.in</a> and attach the invoice in the mail.
+            </p>
+            
+    </div>
 </BaseLayout>

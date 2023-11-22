@@ -1,15 +1,296 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Background from "../images/hero-bg.png"
+import Callout from "../components/Callout.astro";
+import RegistrationTable from "../components/RegistrationTable.astro";
+import PaymentDetails from "../components/PaymentDetails.astro"
+import { countries } from "../data/countries";
 
 const title = "Registration",
 description = "Registration process for the Conference will be done in online mode for the Indian delegates. This page will provide all the features regarding the Registration process. This page will collect the data of visiting delegates for management in the conference."
 ---
 
 <BaseLayout title={title} description={description}>
-    <section class=`px-4 py-20 md:py-32` style=`background-image: url('${Background.src}')`>
-        <div class="container mx-auto">
-            <h1 class="mb-6 md:mb-10 font-display font-semibold md:font-medium text-4xl md:text-6xl">To be announced soon</h1>
-        </div>
-    </section>
-</BaseLayout>
+    <div class="container px-4 py-16 md:py-24 mx-auto border-b border-slate-200">
+        <h1 class="mb-8 md:mb-10 font-display text-3xl md:text-5xl text-gray-900">Registration</h1>
+        <p class="mb-6 md:mb-8 text-lg md:text-xl text-gray-800 leading-relaxed">The 44th Annual Meet and International Conference On <span class="italic font-medium">"Shaping Tomorrow: Society, Culture and the Environment in an Interconnected World"</span></p>
+        <Callout type="Info" text={`Completion of payments for registration fee and accomodation fee (if any) is required before submitting this form. Kindly visit the <a href="/guidelines" class="underline text-blue-600">guidelines<a> page for detailed information regarding registration and accomodation.`} />
+        <form action="#" method="post" class="w-full mt-10 md:mt-12 px-4 md:px-8 py-6 md:py-12 bg-slate-100 border border-gray-200 rounded-md" enctype="multipart/form-data">
+            <!-- Participant Name -->
+            <div class="mb-4 md:mb-6">
+                <label for="participant_name" class="block font-medium text-gray-600">Participant Name<span
+                class="text-red-500">*</span></label>
+            <input required type="text" id="participant_name" name="participant_name" class="mt-2.5 p-3 w-full border rounded-md">
+            </div>
+
+            <!-- Designation -->
+            <div class="mb-4 md:mb-6">
+                <label for="designation" class="block font-medium text-gray-600">Designation<span
+                class="text-red-500">*</span></label>
+                <input required type="text" id="designation" name="designation" class="mt-2.5 p-3 w-full border rounded-md">
+            </div>
+
+            <!-- Institution -->
+            <div class="mb-4 md:mb-6">
+                <label for="institution" class="block font-medium text-gray-600">Institution<span
+                class="text-red-500">*</span></label>
+                <input required type="text" id="institution" name="institution" class="mt-2.5 p-3 w-full border rounded-md">
+            </div>
+
+            <!-- Department -->
+            <div class="mb-4 md:mb-6">
+                <label for="department" class="block font-medium text-gray-600">Department<span
+                class="text-red-500">*</span></label>
+                <input required type="text" id="department" name="department" class="mt-2.5 p-3 w-full border rounded-md">
+            </div>
+
+            <!-- Country Select -->
+            <div class="mb-4 md:mb-6">
+                <label for="country" class="block font-medium text-gray-600">Country<span
+                    class="text-red-500">*</span></label>
+                <select required id="country" name="country" class="mt-2.5 p-3 w-full border rounded-md">
+                {
+                    Object.keys(countries).map(country => (
+                        <option selected={country==="India"&&"selected"} value={country}>{country}</option>
+                    ))
+                }
+                </select>
+            </div>
+
+            <!-- laddress container -->
+            <div id="address_container">
+                <!-- State -->
+                <div class="mb-4 md:mb-6">
+                    <label for="state" class="block font-medium text-gray-600">State<span
+                    class="text-red-500">*</span></label>
+                    <input required type="text" id="state" name="state" class="mt-3 p-3 w-full border rounded-md">
+                </div>
+
+                <!-- Address -->
+                <div class="mb-4 md:mb-6">
+                    <label for="address" class="block font-medium text-gray-600">Address<span
+                    class="text-red-500">*</span></label>
+                    <input required type="text" id="address" name="address" class="mt-3 p-3 w-full border   rounded-md">
+                </div>
+
+                <!-- Pin No -->
+                <div class="mb-4 md:mb-6">
+                    <label for="pin_no" class="block font-medium text-gray-600">Pin No<span
+                    class="text-red-500">*</span></label>
+                    <input required type="text" id="pin_no" name="pin_no" class="mt-3 p-3 w-full border     rounded-md">
+                </div>
+            </div>
+            
+
+            <!-- Email id -->
+            <div class="mb-4 md:mb-6">
+                <label for="email_id" class="block font-medium text-gray-600">Email id<span
+                class="text-red-500">*</span></label>
+                <input required type="email" id="email_id" name="email_id" class="mt-3 p-3 w-full border rounded-md">
+            </div>
+
+            <!-- Phone Number -->
+            <div class="mb-4 md:mb-6">
+                <label for="phone_no" class="block font-medium text-gray-600">Phone Number<span
+                class="text-red-500">*</span></label>
+                <input required type="tel" id="phone_no" name="phone_no" class="mt-3 p-3 w-full border rounded-md">
+            </div>
+
+            <!-- Passport Details -->
+            <div id="passport_container">
+               
+            </div>
+
+            <!-- Sex -->
+            <div class="mb-4 md:mb-6">
+                <label for="sex" class="block font-medium text-gray-600">Sex<span
+                class="text-red-500">*</span></label>
+                <select required id="sex" name="sex" class="mt-3 p-3 w-full border rounded-md">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <!-- IIG Member -->
+            <div class="mb-4 md:mb-6">
+                <label class="block font-medium text-gray-600">Are you a member of IIG?<span
+                class="text-red-500">*</span></label>
+                <div class="flex items-center mt-3">
+                    <input required type="radio" id="iig_yes" name="iig_member" value="Yes" class="mr-2">
+                    <label for="iig_yes">Yes</label>
+                    <input required type="radio" id="iig_no" name="iig_member" value="No" class="ml-6 mr-2">
+                    <label for="iig_no">No</label>
+                </div>
+            </div>
+
+            <!-- Accommodation Option -->
+            <div class="mb-4 md:mb-6">
+                <label class="block font-medium text-gray-600">Accommodation Option<span
+                class="text-red-500">*</span></label>
+                <div class="flex items-center mt-3">
+                    <input required type="radio" id="accommodation_organizer" name="accommodation_option" value="Through Organizer" class="mr-2">
+                    <label for="accommodation_organizer">Through Organizer</label>
+                    <input required type="radio" id="accommodation_self" name="accommodation_option" value="Self Booking" class="ml-6 mr-2">
+                    <label for="accommodation_self">Self Booking</label>
+                </div>
+            </div>
+
+            <!-- Accomodation Container -->
+            <div id="accomodation_container">
+                
+            </div>
+            
+            <!-- Nature of Participation -->
+            <div class="mb-4 md:mb-6">
+                <label for="nature_of_participation" class="block font-medium text-gray-600">Nature of Participation<span
+                class="text-red-500">*</span></label>
+                <select required id="nature_of_participation" name="nature_of_participation" class="mt-3 p-3 w-full border rounded-md">
+                    <option value="Delegates/Faculty with paper">Delegates/Faculty with paper</option>
+                    <option value="General Delegates without papers">General Delegates without papers</option>
+                    <option value="Students/Research Scholars">Students/Research Scholars</option>
+                    <option value="Accompanying Person">Accompanying Person</option>
+                </select>
+            </div>
+
+            <RegistrationTable/>
+            <PaymentDetails/>
+
+            <!-- Registration Fee -->
+            <div class="mb-4 md:mb-6">
+                <label for="registration_fee" class="block font-medium text-gray-600">Registration Fee<span
+                    class="text-red-500">*</span></label>
+                <input required type="number" min="1000" id="registration_fee" name="registration_fee" class="mt-3 p-3 w-full border rounded-md">
+            </div>
+
+            <!-- Accomodation Fee -->
+            <div class="mb-4 md:mb-6">
+                <label for="accomodation_fee" class="block font-medium text-gray-600">Accomodation Fee</label>
+                <input readonly value=0 type="number" id="accomodation_fee" name="accomodation_fee" class="mt-3 p-3 w-full border bg-slate-50 rounded-md">
+            </div>
+
+            <!-- Registration Proof -->
+            <div class="mb-4 md:mb-6">
+                <label for="registration_proof" class="block font-medium text-gray-600">Registration Proof <span
+                    class="text-red-500">*</span></label>
+                <input required type="file" accept=".jpg,.jpeg,.png" id="registration_proof" name="registration_proof" class="mt-3 p-3 w-full border rounded-md">
+                <p class="mt-2 text-sm text-gray-700">*Upload screenshot or photo of registration fees payment.</p>
+            </div>
+
+            <!-- Accomodation Proof -->
+            <div class="mb-4 md:mb-6">
+                <label for="accomodation_proof" class="block font-medium text-gray-600">Accomodation Proof </label>
+                <input type="file" accept=".jpg,.jpeg,.png" id="accomodation_proof" name="accomodation_proof" class="mt-3 p-3 w-full border rounded-md">
+                <p class="mt-2 text-sm text-gray-700">*If you have booked accomodation through the organizer, upload a screenshot of accomodation fees payment.</p>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="w-full mt-6 p-3 text-lg text-gray-200 hover:text-white bg-slate-700 hover:bg-slate-800 rounded-lg">Submit</button>
+        </form>
+    </div>
+</BaseLayout> 
+
+
+<style>
+    input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #1A5112;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #1e3a19;
+}
+</style>
+
+
+<script>
+    const markups = {
+        addressMarkup : `<!-- State -->
+                <div class="mb-4 md:mb-6">
+                    <label for="state" class="block font-medium text-gray-600">State<span
+                    class="text-red-500">*</span></label>
+                    <input required type="text" id="state" name="state" class="mt-3 p-3 w-full border rounded-md">
+                </div>
+
+                <!-- Address -->
+                <div class="mb-4 md:mb-6">
+                    <label for="address" class="block font-medium text-gray-600">Address<span
+                    class="text-red-500">*</span></label>
+                    <input required type="text" id="address" name="address" class="mt-3 p-3 w-full border   rounded-md">
+                </div>
+
+                <!-- Pin No -->
+                <div class="mb-4 md:mb-6">
+                    <label for="pin_no" class="block font-medium text-gray-600">Pin No<span
+                    class="text-red-500">*</span></label>
+                    <input required type="text" id="pin_no" name="pin_no" class="mt-3 p-3 w-full border     rounded-md">
+                </div>`,
+        passportMarkup : ` <div class="mb-4 md:mb-6">
+                    <label for="passport_details" class="block font-medium text-gray-600">Passport Details<span
+                    class="text-red-500">*</span></label>
+                    <input type="tel" id="passport_details" name="passport_details" class="mt-3 p-3 w-full border rounded-md">
+                </div>`,
+        accomodationMarkup : `<!-- Days Booked -->
+                <div class="mb-4 md:mb-6">
+                    <label for="days_booked" class="block font-medium text-gray-600">Number of days booked<span
+                    class="text-red-500">*</span></label>
+                    <input required type="number" min="1" id="days_booked" name="days_booked" class="mt-3 p-3 w-full border  rounded-md">
+                </div>
+
+                <!-- Occupancy details -->
+                <div class="mb-4 md:mb-6">
+                    <label for="occupancy_details" class="block font-medium text-gray-600">Occupancy Details<span
+                    class="text-red-500">*</span></label>
+                    <select required id="occupancy_details" name="occupancy_details" class="mt-3 p-3 w-full border   rounded-md">
+                        <option value="Single">Single Room</option>
+                        <option value="Double">Double Room</option>
+                        <option value="Triple">Triple Room</option>
+                    </select>
+                </div>
+
+                <!-- Arrival Details -->
+                <div class="mb-4 md:mb-6">
+                    <label for="arrival_details" class="block font-medium text-gray-600">Arrival Details<span
+                    class="text-red-500">*</span></label>
+                    <input required type="date" id="arrival_details" name="arrival_details" class="mt-3 p-3 w-full border rounded-md">
+                </div>
+
+                <!-- Departure Details -->
+                <div class="mb-4 md:mb-6">
+                    <label for="departure_details" class="block font-medium text-gray-600">Departure Details<span
+                    class="text-red-500">*</span></label>
+                    <input required type="date" id="departure_details" name="departure_details" class="mt-3 p-3 w-full  border rounded-md">
+                </div>`
+    }
+
+    function updateElement(id, markup) {
+        const element = document.getElementById(id)
+        element.innerHTML = markup
+    }
+
+    // show or hide State, Address and Pin No based on the selected country
+    const countrySelect = document.getElementById('country')
+    countrySelect.addEventListener('change', ()=> {
+        let markup
+        countrySelect.value === "India" ? markup = markups.addressMarkup : markup = ""
+        if(countrySelect.value === "India") {
+            updateElement("address_container", markups.addressMarkup)
+        } else {
+            updateElement("address_container", "")
+            updateElement("passport_container", markups.passportMarkup)
+
+        }
+    })
+
+    // show or hide Days Booked, Occupancy details, Arrival Details and Departure Details based on the value of Accommodation Option
+    const optionOrganizer = document.getElementById("accommodation_organizer")
+    optionOrganizer.addEventListener("change" , () => updateElement("accomodation_container", markups.accomodationMarkup))
+    const optionSelfBooking = document.getElementById("accommodation_self")
+    optionSelfBooking.addEventListener("change" , () => updateElement("accomodation_container", ""))
+    
+</script>

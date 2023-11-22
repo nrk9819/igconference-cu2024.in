@@ -1,13 +1,16 @@
 ---
+import { parse } from 'node-html-parser'
+
 interface Props {
     type: "New" | "Expired" | "Info",
-    text: String
+    text: string
 }
 
 const {type, text} = Astro.props
+const root = parse(text)
 ---
 
 <div class=`w-full mb-6 p-4 md:p-6 border rounded-lg ${type==="New" && "bg-green-100 border-green-400"} ${type==="Expired" && "bg-yellow-100 border-yellow-300"} ${type==="Info" && "bg-purple-100 border-purple-300"}`>
     <h3 class=`md:pb-2 text-l md:text-xl ${type==="New" && "text-green-800"} ${type==="Expired" && "text-yellow-800"} ${type==="Info" && "text-purple-800"} font-semibold`>{type}</h3>
-    <p class=`md:text-lg text-slate-800`>{text}</p>
+    <p class=`md:text-lg text-slate-800`>{root}</p>
 </div>
