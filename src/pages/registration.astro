@@ -132,6 +132,8 @@ description = "Registration process for the Conference will be done in online mo
                     <label for="accommodation_organizer">Through Organizer</label>
                     <input required type="radio" id="accommodation_self" name="accommodation_option" value="Self Booking" class="ml-6 mr-2">
                     <label for="accommodation_self">Self Booking</label>
+                    <input required type="radio" id="accommodation_none" name="accommodation_option" value="None" class="ml-6 mr-2">
+                    <label for="accommodation_none">None</label>
                 </div>
             </div>
 
@@ -152,6 +154,13 @@ description = "Registration process for the Conference will be done in online mo
                 </select>
             </div>
 
+            <!-- Paper Title -->
+            <div class="mb-4 md:mb-6">
+                <label for="paper_title" class="block font-medium text-gray-600">Title of the paper<span
+                class="text-red-500">*</span></label>
+                <input required type="text" id="paper_title" name="paper_title" class="mt-3 p-3 w-full border rounded-md">
+            </div>
+
             <RegistrationTable/>
             <PaymentDetails/>
 
@@ -170,7 +179,7 @@ description = "Registration process for the Conference will be done in online mo
 
             <!-- Registration Proof -->
             <div class="mb-4 md:mb-6">
-                <label for="registration_proof" class="block font-medium text-gray-600">Registration Proof <span
+                <label for="registration_proof" class="block font-medium text-gray-600">Registration Fees Proof <span
                     class="text-red-500">*</span></label>
                 <input required type="file" accept=".jpg,.jpeg,.png" id="registration_proof" name="registration_proof" class="mt-3 p-3 w-full border rounded-md">
                 <p class="mt-2 text-sm text-gray-700">*Upload screenshot or photo of registration fees payment.</p>
@@ -178,7 +187,7 @@ description = "Registration process for the Conference will be done in online mo
 
             <!-- Accomodation Proof -->
             <div class="mb-4 md:mb-6">
-                <label for="accomodation_proof" class="block font-medium text-gray-600">Accomodation Proof </label>
+                <label for="accomodation_proof" class="block font-medium text-gray-600">Accomodation Fees Proof </label>
                 <input type="file" accept=".jpg,.jpeg,.png" id="accomodation_proof" name="accomodation_proof" class="mt-3 p-3 w-full border rounded-md">
                 <p class="mt-2 text-sm text-gray-700">*If you have booked accomodation through the organizer, upload a screenshot of accomodation fees payment.</p>
             </div>
@@ -288,9 +297,14 @@ input[type=file]::file-selector-button:hover {
     })
 
     // show or hide Days Booked, Occupancy details, Arrival Details and Departure Details based on the value of Accommodation Option
-    const optionOrganizer = document.getElementById("accommodation_organizer")
-    optionOrganizer.addEventListener("change" , () => updateElement("accomodation_container", markups.accomodationMarkup))
-    const optionSelfBooking = document.getElementById("accommodation_self")
-    optionSelfBooking.addEventListener("change" , () => updateElement("accomodation_container", ""))
+    const accomodationOptions = document.querySelectorAll('input[name="accommodation_option"]')
+    accomodationOptions.forEach(accomodationOption => {
+        accomodationOption.addEventListener("change",()=> {
+            const selected = accomodationOption.checked 
+            const value = accomodationOption.value
+            if(value==="Through Organizer" && selected) updateElement("accomodation_container", markups.accomodationMarkup)
+            else updateElement("accomodation_container", "")
+        })
+    })
     
 </script>
