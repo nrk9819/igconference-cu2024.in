@@ -10,87 +10,14 @@ description = "IIG has instituted an award for the best paper presented by a sin
 <BaseLayout title={title} description={description}>
     <div class="container px-4 py-16 md:py-24 mx-auto border-b border-slate-200">
             <h1 class="mb-8 md:mb-10 font-display text-3xl md:text-5xl text-gray-900">Guidelines</h1>
-            <h2 class="mt-12 md:mt-16 mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Registration Guidelines</h2>
+            <h2 class="mt-12 md:mt-16 mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Guidelines for Registration</h2>
             <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">Payment completion for registration is required before submitting the <a href="/registration" class="underline text-blue-600">registration form</a>. Details about registration fees and bank credentials is provided below.
             </p>
             <RegistrationTable/>
             <PaymentDetails/>
         
-            <h2 class="mt-12 md:mt-16 mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Accomodation Guidelines</h2>
-            <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">Accomodation can be booked through the organisers and by yourself (<a href="/accomodation" class="underline text-blue-600">check more details</a>)
+            <h2 class="mt-12 md:mt-16 mb-5 md:mb-7 text-xl md:text-3xl font-medium text-gray-900">Guidelines for Young Geographer Award</h2>
+            <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">IIG has instituted an award for the best paper presented by a single author of below the age of 30. The participants must be Indian Nationals and from the discipline of Geography. Young scholars interested to take part in the competition must send an abstract of about 500 words by the deadline of November 07, 2023, along with registration fee to be considered for the award. They are also required to submit the full paper by December 15, 2023. The young scholars/faculty need to get a certificate from the institution they belong to indicating their status and proof on age which should be sent along with the abstract. A committee will evaluate the quality of the submission and selected participants will be informed about the status of their submission by 21st December 2023. Unsuccessful candidates will however be allowed to present their papers in the relevant technical sessions.
             </p>
-            <p class="mb-10 md:mb-12 text-lg md:text-xl text-gray-800 leading-relaxed">If you are booking your accomodation through the organisers, please choose accomodation options below. It will generate an invoice, which will be downloaded automatically. After downloading the invoice, contact the organizers through <a href="mailto:iigconference2024@cottonuniversity.ac.in" class="underline">iigconference2024@cottonuniversity.ac.in</a> and attach the invoice in the mail.
-            </p>
-            
-            <!-- Invoice generator form -->
-            <form id="form" class="w-full mt-10 md:mt-12 px-4 md:px-8 py-6 md:py-12 bg-slate-100 border border-gray-200 rounded-md">
-                <!-- Days Booked -->
-                <div class="mb-4 md:mb-6">
-                    <label for="days_booked" class="block font-medium text-gray-600">Number of days booked<span
-                    class="text-red-500">*</span></label>
-                    <input required type="number" min="1" id="days_booked" name="days_booked" class="mt-3 p-3 w-full border  rounded-md">
-                </div>
-
-                <!-- Occupancy details -->
-                <div class="mb-4 md:mb-6">
-                    <label for="occupancy_details" class="block font-medium text-gray-600">Occupancy Details<span
-                    class="text-red-500">*</span></label>
-                    <select required id="occupancy_details" name="occupancy_details" class="mt-3 p-3 w-full border   rounded-md">
-                        <option value="Single">Single Room</option>
-                        <option value="Double">Double Room</option>
-                        <option value="Triple">Triple Room</option>
-                    </select>
-                </div>
-
-                <!-- Arrival Details -->
-                <div class="mb-4 md:mb-6">
-                    <label for="arrival_details" class="block font-medium text-gray-600">Arrival Details<span
-                    class="text-red-500">*</span></label>
-                    <input required type="date" id="arrival_details" name="arrival_details" class="mt-3 p-3 w-full border rounded-md">
-                </div>
-
-                <!-- Departure Details -->
-                <div class="mb-4 md:mb-6">
-                    <label for="departure_details" class="block font-medium text-gray-600">Departure Details<span
-                    class="text-red-500">*</span></label>
-                    <input required type="date" id="departure_details" name="departure_details" class="mt-3 p-3 w-full  border rounded-md">
-                </div>
-
-                <!-- Total Amount -->
-                <div class="mb-4 md:mb-6">
-                    <label for="total" class="block font-medium text-gray-600">Total Amount (INR)</label>
-                    <input readonly type="number" min="1" id="total" name="total" class="mt-3 p-3 w-full border bg-slate-50 rounded-md" value="0">
-                </div>
-
-                <!-- Submit -->
-                <button type="submit" class="w-full mt-6 p-3 text-lg text-gray-200 hover:text-white bg-slate-700 hover:bg-slate-800 rounded-lg">Download Invoice</button>
-            </form>
     </div>
 </BaseLayout>
-
-
-<script>
-    const form = document.getElementById("form")
-   
-    form.addEventListener("input", () => {
-        const daysBooked = document.getElementById('days_booked').value
-        const occupancyDetails = document.getElementById('occupancy_details').value;
-
-        // Set room cost based on occupancy
-        let roomCost;
-            switch (occupancyDetails) {
-                case 'Single':
-                    roomCost = 1200;
-                    break;
-                case 'Double':
-                case 'Triple':
-                    roomCost = 700;
-                    break;
-                default:
-                    roomCost = 0; // Default or error handling
-            }
-        // Calculate total and update the total field
-        const total = daysBooked * roomCost;
-        document.getElementById('total').value = total;
-    })
-</script>
