@@ -354,6 +354,9 @@ description = "Registration process for the Conference will be done in online mo
             method: "POST",
             body: formData})
             
+            document.getElementById("popup").classList.remove("hidden")
+            document.getElementById("popup-content").textContent = "⌛ Processing upload details. Please don't refresh or close this tab."
+
             if(response.ok) {
                 const data = await response.json()
                 
@@ -376,8 +379,8 @@ description = "Registration process for the Conference will be done in online mo
                 document.body.removeChild(downloadLink)
 
                 // update popup
-                document.getElementById("popup").classList.remove("hidden")
                 document.getElementById("popup-content").textContent = data.message
+                document.getElementById("close-popup").removeAttribute('disabled')
             } else {
                 const status = response.status, statusText = response.statusText
                 const errorText = await response.json()
@@ -385,8 +388,8 @@ description = "Registration process for the Conference will be done in online mo
             }
         } catch(e) {
             console.error(e)
-            document.getElementById("popup").classList.remove("hidden")
             document.getElementById("popup-content").textContent = e.message
+            document.getElementById("close-popup").removeAttribute('disabled')
         }
     })
 
