@@ -347,15 +347,15 @@ description = "Registration process for the Conference will be done in online mo
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
         
+        document.getElementById("popup").classList.remove("hidden")
+            document.getElementById("popup-content").textContent = "⌛ Processing upload details. Please don't refresh or close this tab."
+
         const formData = new FormData(form)
 
         try{
             const response = await fetch("https://api.iigconference-cu2024.in/register", {
             method: "POST",
             body: formData})
-            
-            document.getElementById("popup").classList.remove("hidden")
-            document.getElementById("popup-content").textContent = "⌛ Processing upload details. Please don't refresh or close this tab."
 
             if(response.ok) {
                 const data = await response.json()
